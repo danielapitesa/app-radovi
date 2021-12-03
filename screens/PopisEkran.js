@@ -1,19 +1,24 @@
 import * as React from 'react';
 import { View, Text, StyleSheet, FlatList } from 'react-native';
+import Tipka from '../components/Tipka'
 
 import { RADOVI } from '../data/test-podaci';
 
-const PopisEkran = () => {
+const PopisEkran = ({navigation}) => {
   const prikazElelementa = (podaci) => {
     return (
-      <View style={stil.popisElement}>
-        <Text>{podaci.item.student}</Text>
-      </View>
+        <Tipka 
+          title={podaci.item.naslov} 
+          onPress={() => navigation.navigate('Detalji', {
+            ime: podaci.item.student,
+            naslov: podaci.item.naslov,
+            vrsta: podaci.item.vrsta
+          })} />
     );
   };
   return (
     <View style={stil.ekran}>
-      <Text>Ekran sa popisom studenata</Text>
+      <Text style={stil.tekst}>Radovi spremljeni u repozitorij:</Text>
       <FlatList data={RADOVI} renderItem={prikazElelementa} />
     </View>
   );
@@ -31,6 +36,11 @@ const stil = StyleSheet.create({
     marginVertical:15,
     borderColor: "black",
     borderWidth: 1,
+  }, 
+  tekst: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginVertical: 30
   }
 });
 

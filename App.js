@@ -13,8 +13,8 @@ function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Naslovna" component={PocetniEkran} />
-        <Stack.Screen name="Popis" component={PopisEkran} />
+        <Stack.Screen name="Naslovna" component={PocetniEkran} options={{ title: "REPOZITORIJ RADOVA" }} />
+        <Stack.Screen name="Popis" component={PopisEkran} options={{ title: "Popis radova" }} />
         <Stack.Screen name="Detalji" component={DetaljiEkran} />
         <Stack.Screen name="Unos" component={UnosEkran} />
       </Stack.Navigator>
